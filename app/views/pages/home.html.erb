@@ -1,0 +1,12 @@
+<h1> Sign in</h1>
+<%= form_tag("/sign_in", method: "post") do %>
+  <%= label_tag(:login, "Login name") %>
+  <%= text_field_tag(:login) %>
+
+  <%= label_tag(:password, "Password") %>
+  <%= password_field_tag(:password) %>
+
+  <%= submit_tag("Login IN") %>
+<% end %>
+<p> Don't have account?</p>
+<%= link_to 'Sign Up', new_user_path %>
