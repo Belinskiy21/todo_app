@@ -1,7 +1,11 @@
 <H1>Hi <%= @user.login%></h1>
     <ul>
     <% @lists.each do |list|%>
-    <li><%= list.title %> <%= link_to 'del', user_list_path(@user.id, list.id), method: :delete %></li>
+    <li>
+    <%= list.title %> 
+    <%= link_to 'del', user_list_path(@user.id, list.id), method: :delete %>
+    <%= link_to 'edit', edit_user_list_path(@user.id,list.id)%>
+    </li>
     <%end%>
     </ul>
 

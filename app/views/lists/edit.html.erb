@@ -1,4 +1,4 @@
-<%= form_for @list, url: user_lists_path(@list.user_id) do |f| %>
+<%= form_for @list, url: user_list_path(@list.user_id, @list.id) do |f| %>
   <%= f.label :title%>
   <%= f.text_field :title %>
 <%= f.hidden_field :user_id%>

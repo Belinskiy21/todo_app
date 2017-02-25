@@ -18,6 +18,24 @@ class ListsController < ApplicationController
     redirect_to user_path(params[:user_id])
     flash[:notice] = "Successfully destroyed"
     end
+
+    def edit
+    @list=List.find_by(id: params[:id]) 
+    unless @list
+    redirect_to user_path(params[:user_id]) 
+    end     
+    end
+
+    def update
+    @list=List.find_by(id: params[:id])
+    unless @list
+    redirect_to user_path(params[:user_id]) 
+    end 
+    @list.update(title: params[:list] [:title])
+    redirect_to user_path(params[:user_id]) 
+    flash[:notice] = "Successfully update..."
+    end
+
     
     private
     def list_params
