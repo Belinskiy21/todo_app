@@ -2,6 +2,7 @@ class UsersController < ApplicationController
     def show
     if session[:current_user_id] == params[:id]
      @user=User.find(params[:id])
+     @lists=@user.lists
     else
         redirect_to root_path
     end
