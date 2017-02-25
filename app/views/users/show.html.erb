@@ -1,8 +1,8 @@
 <H1>Hi <%= @user.login%></h1>
-<ul>
-<% @lists.each do |list|%>
-<li><%= list.title %></li>
-<%end%>
-</ul>
+    <ul>
+    <% @lists.each do |list|%>
+    <li><%= list.title %> <%= link_to 'del', user_list_path(@user.id, list.id), method: :delete %></li>
+    <%end%>
+    </ul>
 
 <%= link_to 'ADD TODO_List', new_user_list_path(@user.id) %>

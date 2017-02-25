@@ -1,21 +1,31 @@
 class ListsController < ApplicationController
+    before_action :authenticate
     def new
-    if session[:current_user_id] == params[:user_id]
        user = User.find(params[:user_id])
        @list= List.new(user: user)
-    else
-        redirect_to root_path
-    end 
     end
     
     def create
         List.create(list_params)
         redirect_to user_path(params[:user_id])
     end
+    def destroy
+    unless List.find_by(id: params[:id])
+         redirect_to user_path(params[:user_id])
+         flash[:error] = "List not Found"
+    end
+    List.destroy(params[:id])
+    redirect_to user_path(params[:user_id])
+    flash[:notice] = "Successfully destroyed"
+    end
     
     private
     def list_params
-        params.require(:user_id, :list).permit(:title)
+        params.require(:list).permit(:title, :user_id)
     end
     
+    def authenticate
+    redirect_to(root_path) unless session[:current_user_id] == params[:user_id]
+    end
+
 end
