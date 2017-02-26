@@ -1,0 +1,13 @@
+<%= form_tag user_list_tasks_path(user_id, list_id) do  %>
+
+  <div class="field">
+   
+    <%= text_field_tag :content %>
+  </div>
+
+    <%= hidden_field_tag :list_id, list_id %>
+
+  <div class="actions">
+    <%= submit_tag 'Create Task' %>
+  </div>
+<% end %>
