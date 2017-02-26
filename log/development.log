@@ -3659,3 +3659,157 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 63ms (Views: 56.4ms | ActiveRecord: 1.2ms)
 
 
+Started GET "/" for ::1 at 2017-02-26 15:27:07 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (11.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (20.3ms)
+Started GET "/" for ::1 at 2017-02-26 15:27:08 +0200
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 653ms (Views: 626.9ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 337ms (Views: 335.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2017-02-26 15:27:11 +0200
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (56.3ms)
+Completed 200 OK in 156ms (Views: 103.6ms | ActiveRecord: 21.3ms)
+
+
+Started POST "/sign_in" for ::1 at 2017-02-26 15:27:23 +0200
+Processing by PagesController#sign_in as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tk3TZB6WNsqXJcRK1R1kO0ZK6p6k3H1UScBBJtsqxeBcfk8gUnt/DX8v5cjuE2vlqDITkk7tuVcE6kRuHXtuYw==", "login"=>"Oleg", "password"=>"[FILTERED]", "commit"=>"Login IN"}
+  [1m[36mUser Load (34.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."login" = $1 AND "users"."password" = $2 LIMIT $3[0m  [["login", "Oleg"], ["password", "qqq"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 58ms (ActiveRecord: 34.6ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-26 15:27:23 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (6.0ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4)[0m
+  Rendered tasks/_form.html.erb (2.3ms)
+  Rendered tasks/_form.html.erb (0.7ms)
+  Rendered users/show.html.erb within layouts/application (60.4ms)
+Completed 200 OK in 170ms (Views: 93.3ms | ActiveRecord: 15.4ms)
+
+
+Started POST "/users/1/lists/4/tasks" for ::1 at 2017-02-26 15:27:46 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CAKrVKMxhR+At036AyEMLK+WBsvhtoDknBQJ3lH+hf7iMTcQ79zM2Gi9bHg4LwPyQe7/xwuHROfRPgyWl68ufQ==", "content"=>"clean the pool", "list_id"=>"4", "commit"=>"Create Task", "user_id"=>"1"}
+Unpermitted parameters: utf8, authenticity_token, commit, user_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (10.9ms)[0m  [1m[32mINSERT INTO "tasks" ("content", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "clean the pool"], ["list_id", 4], ["created_at", 2017-02-26 13:27:46 UTC], ["updated_at", 2017-02-26 13:27:46 UTC]]
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 38ms (ActiveRecord: 17.0ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-26 15:27:46 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4)[0m
+  Rendered tasks/_form.html.erb (1.9ms)
+  Rendered tasks/_form.html.erb (0.4ms)
+  Rendered users/show.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 115ms (Views: 107.1ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users/1/lists/2/tasks" for ::1 at 2017-02-26 15:27:57 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qw5hN5gAHPrtW5OInY4coy1pArWNHxC4rjUrniN8zuVBPf1z1O1VPQVRsgqmgBN9wxH7uWcu1LvjHy7W5S1lZg==", "content"=>"call to John", "list_id"=>"2", "commit"=>"Create Task", "user_id"=>"1"}
+Unpermitted parameters: utf8, authenticity_token, commit, user_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("content", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "call to John"], ["list_id", 2], ["created_at", 2017-02-26 13:27:57 UTC], ["updated_at", 2017-02-26 13:27:57 UTC]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 9ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-26 15:27:57 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.4ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4)[0m
+  Rendered tasks/_form.html.erb (0.8ms)
+  Rendered tasks/_form.html.erb (0.3ms)
+  Rendered users/show.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 40ms (Views: 35.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/1/lists/new" for ::1 at 2017-02-26 15:28:05 +0200
+Processing by ListsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 45ms (Views: 39.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/1/lists" for ::1 at 2017-02-26 15:28:14 +0200
+Processing by ListsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5YK4UohnWo1gSVfoezk7FOqnOvksDcpcL09Ss1Z5CP6HSmzNhv8r5h1Tt9Dbz8wrn1P1EBDWgMeUGgCIiJeI8g==", "list"=>{"title"=>"For Weekend", "user_id"=>"1"}, "commit"=>"Create List", "user_id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mList Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "lists" WHERE "lists"."title" = $1 LIMIT $2[0m  [["title", "For Weekend"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "lists" ("title", "user_id") VALUES ($1, $2) RETURNING "id"[0m  [["title", "For Weekend"], ["user_id", 1]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 38ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-26 15:28:14 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.4ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (1.2ms)
+  Rendered tasks/_form.html.erb (0.9ms)
+  Rendered tasks/_form.html.erb (0.7ms)
+  Rendered users/show.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 60ms (Views: 53.5ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users/1/lists/5/tasks" for ::1 at 2017-02-26 15:28:31 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wyrJ2G7IcqvlLHufpK13jtxgQsu08m96uYX/UixqXxkpGVWcIiU7bA0mWh2fo3hQMhi7x17Dq3n0r/oa6jv0mg==", "content"=>"buy the logs", "list_id"=>"5", "commit"=>"Create Task", "user_id"=>"1"}
+Unpermitted parameters: utf8, authenticity_token, commit, user_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "tasks" ("content", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "buy the logs"], ["list_id", 5], ["created_at", 2017-02-26 13:28:31 UTC], ["updated_at", 2017-02-26 13:28:31 UTC]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 14ms (ActiveRecord: 8.3ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-26 15:28:31 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.4ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (1.1ms)
+  Rendered tasks/_form.html.erb (0.4ms)
+  Rendered tasks/_form.html.erb (0.5ms)
+  Rendered users/show.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 51ms (Views: 45.3ms | ActiveRecord: 1.5ms)
+
+
