@@ -11,6 +11,7 @@
             <li>
             <%= task.content%>
             <%= link_to 'del', user_list_task_path(@user.id, list.id, task.id), method: :delete%>
+            <%= link_to 'edit', edit_user_list_task_path(@user.id, list.id, task.id), method: :get%>
             </li>
          <%end%>
         </ul>

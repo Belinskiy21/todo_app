@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [ :edit, :update, :destroy]
-
  
 
   # GET /tasks/1/edit
@@ -21,15 +20,13 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
-    end
+    @task=Task.find_by(id: params[:id])
+    unless @task
+    redirect_to user_path(params[:user_id]) 
+    end 
+    @task.update(content: params[:task] [:content])
+    redirect_to user_path(params[ :user_id]) 
+    flash[:notice] = "Successfully update..."
   end
 
   # DELETE /tasks/1
@@ -52,4 +49,5 @@ class TasksController < ApplicationController
     def task_params
       params.permit(:content, :list_id)
     end
+   
 end
