@@ -7125,3 +7125,465 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 33ms (Views: 31.7ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2017-02-28 14:49:46 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 10798ms (Views: 10776.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sign_in" for ::1 at 2017-02-28 14:50:10 +0200
+Processing by PagesController#sign_in as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/4lzVLGfDfmU3oTpdDX4id5azDBxa6YAOSPLVddTQOss1MAG5oavMJPmjmVFrjOf/nqfCXmfNHRqApa0/QftZQ==", "login"=>"Oleg", "password"=>"[FILTERED]", "commit"=>"Login IN"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."login" = $1 AND "users"."password" = $2 LIMIT $3[0m  [["login", "Oleg"], ["password", "qqq"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 53ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-28 14:50:10 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.5ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (2.2ms)
+  Rendered tasks/_form.html.erb (0.5ms)
+  Rendered tasks/_form.html.erb (0.5ms)
+  Rendered users/show.html.erb within layouts/application (58.1ms)
+Completed 200 OK in 201ms (Views: 119.7ms | ActiveRecord: 11.9ms)
+
+
+Started GET "/users/1/lists/new" for ::1 at 2017-02-28 14:50:19 +0200
+Processing by ListsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (58.9ms)
+Completed 200 OK in 139ms (Views: 132.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/lists/4/tasks/4/edit" for ::1 at 2017-02-28 14:50:40 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"51sr8XrTsLJz97Bt43M/Ky9urXGclCZxhp7g9pvMk+o0BpijLcoSe3TPuuHS6PQ9D07+SJRgtAXVv70XsZg+ZA==", "user_id"=>"1", "list_id"=>"4", "id"=>"4"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 138ms (Views: 127.9ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/users/4/lists/4/tasks/4" for ::1 at 2017-02-28 14:50:51 +0200
+Processing by TasksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hw/3CfzMxcJEPJqbBtF9CC0qF57GPufnWbEzDVqypRxUUkRbq9VnC0MEkBc3SrYeDQpEp87KdZMKkG7scOYIkg==", "task"=>{"content"=>"clean the pool", "list_id"=>"4"}, "commit"=>"Update Task", "user_id"=>"4", "list_id"=>"4", "id"=>"4"}
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "tasks" SET "content" = $1, "updated_at" = $2 WHERE "tasks"."id" = $3[0m  [["content", "clean the pool"], ["updated_at", 2017-02-28 12:50:51 UTC], ["id", 4]]
+  [1m[35m (11.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 27ms (ActiveRecord: 13.1ms)
+
+
+Started GET "/users/4" for ::1 at 2017-02-28 14:50:51 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-02-28 14:50:51 +0200
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 71ms (Views: 68.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sign_in" for ::1 at 2017-02-28 14:50:59 +0200
+Processing by PagesController#sign_in as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IYN18L8bDIQYXOf1Ke+wRqDg7G0j9yp+yZRO8hf2Wzjy3sai6AKuTR9k7XkYdHtQgMC/VCsDuAqatRMTPaL2tg==", "login"=>"Oleg", "password"=>"[FILTERED]", "commit"=>"Login IN"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."login" = $1 AND "users"."password" = $2 LIMIT $3[0m  [["login", "Oleg"], ["password", "qqq"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 3ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-28 14:50:59 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.7ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (1.3ms)
+  Rendered tasks/_form.html.erb (0.6ms)
+  Rendered tasks/_form.html.erb (0.4ms)
+  Rendered users/show.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 90ms (Views: 82.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/1/lists/2/tasks/6/edit" for ::1 at 2017-02-28 15:38:02 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"vcGpOwuaZvcVNNkljkS700v19u5UPHbQYG860ncyMCtunBppXIPEPhIM06m/33DFa9Wl11zI5KQzTmczXWadpQ==", "user_id"=>"1", "list_id"=>"2", "id"=>"6"}
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (12.0ms)
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 6.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"update", :controller=>"tasks", :id=>"6", :list_id=>"2", :user_id=>nil} missing required keys: [:user_id]):
+    1: <h1>Editing Task</h1>
+    2: 
+    3: <%= form_for @task, url: user_list_task_path(@user_id, @task.list_id, @task.id) do |f| %>
+    4:   <%= f.label :content%>
+    5:   <%= f.text_field :content%>
+    6:   <%= f.hidden_field :list_id%>
+  
+app/views/tasks/edit.html.erb:3:in `_app_views_tasks_edit_html_erb__846132281639427568_70260532825440'
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.7ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (121.5ms)
+Started GET "/users/1" for ::1 at 2017-02-28 15:38:28 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (1.0ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (7.0ms)
+  Rendered tasks/_form.html.erb (0.7ms)
+  Rendered tasks/_form.html.erb (0.4ms)
+  Rendered users/show.html.erb within layouts/application (54.7ms)
+Completed 200 OK in 899ms (Views: 806.1ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/users/1/lists/2/tasks/6/edit" for ::1 at 2017-02-28 15:38:30 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"5MYpKGXT07qvR5n9TYbTw7WCUoTng4IFayLkcf3ok183m5p6Mspxc6h/k3F8HRjVlaIBve93EHE4A7mQ17w+0Q==", "user_id"=>"1", "list_id"=>"2", "id"=>"6"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (4.4ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_id' for nil:NilClass):
+    1: <h1>Editing Task</h1>
+    2: 
+    3: <%= form_for @task, url: user_list_task_path(@list.user_id, @task.list_id, @task.id) do |f| %>
+    4:   <%= f.label :content%>
+    5:   <%= f.text_field :content%>
+    6:   <%= f.hidden_field :list_id%>
+  
+app/views/tasks/edit.html.erb:3:in `_app_views_tasks_edit_html_erb__846132281639427568_70260518001200'
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.3ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (102.1ms)
+Started GET "/users/1/lists/2/tasks/6/edit" for ::1 at 2017-02-28 15:39:01 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"vcGpOwuaZvcVNNkljkS700v19u5UPHbQYG860ncyMCtunBppXIPEPhIM06m/33DFa9Wl11zI5KQzTmczXWadpQ==", "user_id"=>"1", "list_id"=>"2", "id"=>"6"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (5.8ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_id' for 2:Fixnum):
+    1: <h1>Editing Task</h1>
+    2: 
+    3: <%= form_for @task, url: user_list_task_path( @task.list_id.user_id, @task.id) do |f| %>
+    4:   <%= f.label :content%>
+    5:   <%= f.text_field :content%>
+    6:   <%= f.hidden_field :list_id%>
+  
+app/views/tasks/edit.html.erb:3:in `_app_views_tasks_edit_html_erb__846132281639427568_70260547634580'
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.9ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (106.6ms)
+Started GET "/users/1/lists/2/tasks/6/edit" for ::1 at 2017-02-28 15:39:24 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"5MYpKGXT07qvR5n9TYbTw7WCUoTng4IFayLkcf3ok183m5p6Mspxc6h/k3F8HRjVlaIBve93EHE4A7mQ17w+0Q==", "user_id"=>"1", "list_id"=>"2", "id"=>"6"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (53.8ms)
+Completed 200 OK in 123ms (Views: 120.0ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/1/lists/2/tasks/6" for ::1 at 2017-02-28 15:42:12 +0200
+Processing by TasksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"vcGpOwuaZvcVNNkljkS700v19u5UPHbQYG860ncyMCtunBppXIPEPhIM06m/33DFa9Wl11zI5KQzTmczXWadpQ==", "user_id"=>"1", "list_id"=>"2", "id"=>"6"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 6]]
+  [1m[35m (11.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 16ms (ActiveRecord: 12.2ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-28 15:42:12 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.4ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (1.1ms)
+  Rendered tasks/_form.html.erb (0.4ms)
+  Rendered tasks/_form.html.erb (0.4ms)
+  Rendered users/show.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 138ms (Views: 128.1ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users/1/lists/2/tasks" for ::1 at 2017-02-28 15:42:31 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HONXeKrlt2V7qDmadB+Rc9+yKKc3pcDJxP9fbQXfZnnPvuQq/fwVrHyQMxZFhFpl/5J7nj9RUr2X3gKML4vL9w==", "content"=>"call to John", "list_id"=>"2", "commit"=>"Create Task", "user_id"=>"1"}
+Unpermitted parameters: utf8, authenticity_token, commit, user_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mList Load (0.5ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[32mINSERT INTO "tasks" ("content", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "call to John"], ["list_id", 2], ["created_at", 2017-02-28 13:42:31 UTC], ["updated_at", 2017-02-28 13:42:31 UTC]]
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 23ms (ActiveRecord: 13.7ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-28 15:42:31 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.5ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (1.8ms)
+  Rendered tasks/_form.html.erb (0.5ms)
+  Rendered tasks/_form.html.erb (0.5ms)
+  Rendered users/show.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 103ms (Views: 97.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/1/lists/2/tasks/7/edit" for ::1 at 2017-02-28 15:42:33 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"Rmh4Su0c8/FwGuVl67UUit58Sd2tNcWzkTS/0F1fvoSVNcsYugVROHci7+naLt+c/lwa5KXBV8fCFeIxdwsTCg==", "user_id"=>"1", "list_id"=>"2", "id"=>"7"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (14.6ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_id' for #<Task:0x007fcd99af2440>):
+    1: <h1>Editing Task</h1>
+    2: 
+    3: <%= form_for @task, url: user_list_task_path(@task.user_id @task.list_id, @task.id) do |f| %>
+    4:   <%= f.label :content%>
+    5:   <%= f.text_field :content%>
+    6:   <%= f.hidden_field :list_id%>
+  
+app/views/tasks/edit.html.erb:3:in `_app_views_tasks_edit_html_erb__846132281639427568_70260511704220'
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.5ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (99.0ms)
+Started GET "/users/1" for ::1 at 2017-02-28 15:43:41 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.5ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (1.8ms)
+  Rendered tasks/_form.html.erb (0.6ms)
+  Rendered tasks/_form.html.erb (0.4ms)
+  Rendered users/show.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 128ms (Views: 117.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/1/lists/2/tasks/7/edit" for ::1 at 2017-02-28 15:43:43 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"cUF+euk5WulPKc0X3r5rlfBVSmL+sW/RErR2OsAvVQOiHM0oviD4IEgRx5vvJaCD0HUZW/ZF/aVBlSvb6nv4jQ==", "user_id"=>"1", "list_id"=>"2", "id"=>"7"}
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (7.6ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `user' for #<Task:0x007fcd999bc4e0>):
+    1: <h1>Editing Task</h1>
+    2: 
+    3: <%= form_for @task, url: user_list_task_path(@task.user.id @task.list_id, @task.id) do |f| %>
+    4:   <%= f.label :content%>
+    5:   <%= f.text_field :content%>
+    6:   <%= f.hidden_field :list_id%>
+  
+app/views/tasks/edit.html.erb:3:in `_app_views_tasks_edit_html_erb__846132281639427568_70260511056560'
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.3ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (109.3ms)
+Started GET "/users/1/lists/2/tasks/7/edit" for ::1 at 2017-02-28 15:45:34 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"cUF+euk5WulPKc0X3r5rlfBVSmL+sW/RErR2OsAvVQOiHM0oviD4IEgRx5vvJaCD0HUZW/ZF/aVBlSvb6nv4jQ==", "user_id"=>"1", "list_id"=>"2", "id"=>"7"}
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (11.3ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_id' for #<Task:0x007fcda0810b30>):
+    1: <h1>Editing Task</h1>
+    2: 
+    3: <%= form_for @task, url: user_list_task_path(@task.user_id @task.list_id, @task.id) do |f| %>
+    4:   <%= f.label :content%>
+    5:   <%= f.text_field :content%>
+    6:   <%= f.hidden_field :list_id%>
+  
+app/views/tasks/edit.html.erb:3:in `_app_views_tasks_edit_html_erb__846132281639427568_70260568889840'
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.4ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (12.7ms)
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (116.9ms)
+Started GET "/users/1" for ::1 at 2017-02-28 15:45:37 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.6ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (2.2ms)
+  Rendered tasks/_form.html.erb (0.8ms)
+  Rendered tasks/_form.html.erb (0.6ms)
+  Rendered users/show.html.erb within layouts/application (24.8ms)
+Completed 200 OK in 131ms (Views: 116.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/users/1/lists/2/tasks/7/edit" for ::1 at 2017-02-28 15:45:39 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"skqPSbChipA/myT1xpm3C0OfHYXKi4HlkwwIicH54iZhFzwb57goWTijLnn3AnwdY79OvMJ/E5HALVVo661PqA==", "user_id"=>"1", "list_id"=>"2", "id"=>"7"}
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (10.9ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_id' for #<Task:0x007fcd997a0a58>):
+    1: <h1>Editing Task</h1>
+    2: 
+    3: <%= form_for @task, url: user_list_task_path(@task.user_id @task.list_id, @task.id) do |f| %>
+    4:   <%= f.label :content%>
+    5:   <%= f.text_field :content%>
+    6:   <%= f.hidden_field :list_id%>
+  
+app/views/tasks/edit.html.erb:3:in `_app_views_tasks_edit_html_erb__846132281639427568_70260511758900'
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (11.3ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (94.6ms)
+Started GET "/users/1/lists/2/tasks/7/edit" for ::1 at 2017-02-28 15:46:48 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"cUF+euk5WulPKc0X3r5rlfBVSmL+sW/RErR2OsAvVQOiHM0oviD4IEgRx5vvJaCD0HUZW/ZF/aVBlSvb6nv4jQ==", "user_id"=>"1", "list_id"=>"2", "id"=>"7"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (7.9ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_id' for 2:Fixnum):
+    1: <h1>Editing Task</h1>
+    2: 
+    3: <%= form_for @task, url: user_list_task_path(@task.list_id.user_id @task.list_id, @task.id) do |f| %>
+    4:   <%= f.label :content%>
+    5:   <%= f.text_field :content%>
+    6:   <%= f.hidden_field :list_id%>
+  
+app/views/tasks/edit.html.erb:3:in `_app_views_tasks_edit_html_erb__846132281639427568_70260509323440'
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.5ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/oleg/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (103.3ms)
+Started GET "/users/1/lists/2/tasks/7/edit" for ::1 at 2017-02-28 15:47:14 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"skqPSbChipA/myT1xpm3C0OfHYXKi4HlkwwIicH54iZhFzwb57goWTijLnn3AnwdY79OvMJ/E5HALVVo661PqA==", "user_id"=>"1", "list_id"=>"2", "id"=>"7"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 120ms (Views: 114.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/lists/2/tasks/7/edit" for ::1 at 2017-02-28 15:50:14 +0200
+Processing by TasksController#edit as HTML
+  Parameters: {"authenticity_token"=>"cUF+euk5WulPKc0X3r5rlfBVSmL+sW/RErR2OsAvVQOiHM0oviD4IEgRx5vvJaCD0HUZW/ZF/aVBlSvb6nv4jQ==", "user_id"=>"1", "list_id"=>"2", "id"=>"7"}
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tasks/edit.html.erb within layouts/application
+  [1m[36mList Load (0.7ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered tasks/edit.html.erb within layouts/application (31.9ms)
+Completed 200 OK in 194ms (Views: 147.9ms | ActiveRecord: 7.0ms)
+
+
+Started PATCH "/users/1/lists/2/tasks/7" for ::1 at 2017-02-28 15:50:21 +0200
+Processing by TasksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZ+Q/sbunvoM7ldDPPpguV0SXxUj+RMgQ6jr9KRX9mLawiOskfc8MwvWXc8NYauvfTIMLCsNgVQQibYVjgNb7A==", "task"=>{"content"=>"call to John+++", "list_id"=>"2"}, "commit"=>"Update Task", "user_id"=>"1", "list_id"=>"2", "id"=>"7"}
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "tasks" SET "content" = $1, "updated_at" = $2 WHERE "tasks"."id" = $3[0m  [["content", "call to John+++"], ["updated_at", 2017-02-28 13:50:21 UTC], ["id", 7]]
+  [1m[35m (18.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 39ms (ActiveRecord: 20.4ms)
+
+
+Started GET "/users/1" for ::1 at 2017-02-28 15:50:21 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mList Load (0.7ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."list_id" IN (2, 4, 5)[0m
+  Rendered tasks/_form.html.erb (2.1ms)
+  Rendered tasks/_form.html.erb (0.7ms)
+  Rendered tasks/_form.html.erb (0.9ms)
+  Rendered users/show.html.erb within layouts/application (28.5ms)
+Completed 200 OK in 179ms (Views: 128.8ms | ActiveRecord: 12.3ms)
+
+

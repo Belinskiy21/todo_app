@@ -1,6 +1,6 @@
 <h1>Editing Task</h1>
 
-<%= form_for @task, url: user_list_task_path(@task.list_id, @task.id) do |f| %>
+<%= form_for @task, url: user_list_task_path(@task.user_id, @task.list_id, @task.id) do |f| %>
   <%= f.label :content%>
   <%= f.text_field :content%>
   <%= f.hidden_field :list_id%>
