@@ -1,22 +1,82 @@
-<H1>Hi <%= @user.login%></h1>
-    <ul>
-    <% @lists.each do |list|%>
-        <li>
-        <%= list.title %> 
-        <%= link_to 'del', user_list_path(@user.id, list.id), method: :delete %>
-        <%= link_to 'edit', edit_user_list_path(@user.id,list.id)%>
-        <%= render 'tasks/form', list_id: list.id, user_id: @user.id %>
-        <ul>
-        <% list.tasks.each do |task| %>
-            <li>
-            <%= task.content%>
-            <%= link_to 'del', user_list_task_path(@user.id, list.id, task.id), method: :delete%>
-            <%= link_to 'edit', edit_user_list_task_path(@user.id, list.id, task.id), method: :get%>
-            </li>
-         <%end%>
-        </ul>
-        </li>
-    <%end%>
-    </ul>
+<main>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
 
-<%= link_to 'ADD TODO_List', new_user_list_path(@user.id) %>
+      <section>
+        <article>
+          <% @lists.each do |list|%>
+            <div class="panel panel-default todoListContainer">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-md-1 text-center">
+                    <span class="glyphicon glyphicon-list"></span>
+                  </div>
+
+                  <div class="col-md-9">
+                    <span class="project-title">
+                      <%= list.title %>
+                    </span>
+                  </div>
+
+                  <div class="col-md-2">
+                    <div class="pull-right project-controls">
+                      <%= link_to '', edit_user_list_path(@user.id,list.id), class: 'fa fa-pencil'%>
+                      |
+                      <%= link_to '', user_list_path(@user.id, list.id), method: :delete, class: 'fa fa-trash' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="task-index">
+                <div class="row newTaskPanel">
+                  <div class="col-md-1 text-center">
+                    <span class="glyphicon glyphicon-plus"></span>
+                  </div>
+
+                  <div class="col-md-11">
+                    <%= render 'tasks/form', list_id: list.id, user_id: @user.id %>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="list-group" id="tasks">
+                <% list.tasks.each do |task| %>
+                  <li class="list-group-item singleTask">
+                    <div class="row">
+                      <div class="col-md-1 text-center">
+                        <span class="fa-check-square-o"></span>
+                      </div>
+
+                      <div class="col-md-9">
+                        <div class="row">
+                          <span class="task-title">
+                            <%= task.content %>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-2">
+                        <section class="pull-right task-controls">
+                          <%= link_to '', edit_user_list_task_path(@user.id, list.id, task.id), class: 'fa fa-pencil'%>
+                          |
+                          <%= link_to '', user_list_task_path(@user.id, list.id, task.id), method: :delete, class: 'fa fa-trash-o' %>
+                        </section>
+                      </div>
+                    </div>
+                  </li>
+                <%end%>
+              </ul>
+
+            </div>
+          <%end%>
+        </article>
+      </section>
+
+      <div class="text-center">
+        <%= link_to 'ADD TODO List', new_user_list_path(@user.id), class: "btn btn-primary addTodoButton" %>
+      </div>
+
+    </div>
+  </div>
+</main>

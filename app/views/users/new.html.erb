@@ -1,9 +1,46 @@
-<%= form_for @user do |f| %>
-  <%= f.label :login%>
-  <%= f.text_field :login %>
 
-  <%= f.label :password%>
-  <%= f.password_field :password %>
+<<!DOCTYPE html>
+<html lang="en">
 
-  <%= f.submit %>
-<% end %>
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+ <div class="container">
+  <div class="row">
+
+   <div class="col-md-4"></div>
+      <div id="login" class="col-md-4">
+         <h1>Sign Up</h1>
+         <div class="row-fluid" >
+          <div class="span4 well"> 
+         <%= form_for @user do |f| %>
+         <fieldset>
+           <div class="control-group">
+            <%= f.label :login%>
+            <%= f.text_field :login %>
+            <div class="controls">
+            <%= f.label :password%>
+            <%= f.password_field :password %>
+           </div>
+           </div>
+           <br></br>
+            <div class="form-actions">
+            <%= f.submit  class: "btn btn-primary" %>
+            </div>
+         </fieldset>
+        <% end %>
+        </div>
+       </div>
+ </div>
+</div>
+<div id="main" class="col-md-5"></div>
+
+</div>
+</body>
+</html>

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TodoApp</title>
     <%= csrf_meta_tags %>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
   <body>
-  <%=h flash[:error]%>
-  <%=h flash[:notice]%>
+    <%=h flash[:error]%>
+    <%=h flash[:notice]%>
+
+    <header class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+        <h1>Simple TODO Lists</h1>
+      </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>

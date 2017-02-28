@@ -1,0 +1,79 @@
+$task-done-color: grey
+
+.taskDone
+  color: $task-done-color
+  text-decoration: line-through
+
+.newTaskPanel
+  background: linear-gradient(to top, #dadae3, #efeff2)
+  margin: 0
+  .col-md-1
+    padding: 5px
+    .glyphicon-plus
+      color: #43a047
+      font-size: 25px
+  .col-md-11
+    padding: 5px 10px 5px 0px
+    input.btn
+      background: linear-gradient(to top, #43a047, #a5d6a7)
+      border-top: 1px solid #43a047
+      border-bottom: 1px solid #a5d6a7
+
+
+li.singleTask
+  background: #fdfbfb
+  padding: 0
+  color: rgb(75, 75, 75)
+  &:hover
+    background: #fff9f5
+  &:last-child
+    border-bottom-left-radius: 18px !important
+    border-bottom-right-radius: 18px !important
+  &:first-child
+    border-top-left-radius: 0px
+    border-top-right-radius: 0px
+  .col-md-1
+    padding: 10px
+  .col-md-9
+    border-left: 2px solid #f9cecc
+    padding: 10px
+    input[name='task-title']
+      border: 0
+      outline: 0
+      background: transparent
+      border-bottom: 1px dashed rgb(75, 75, 75)
+      font-style: italic
+      color: rgb(75, 75, 75)
+      width: 100%
+    .comments-container
+      margin-top: 10px
+      padding: 15px 15px 5px 15px
+      input[name='new-comment-input']
+        border: 0
+        outline: 0
+        background: transparent
+        border-bottom: 1px dashed rgb(75, 75, 75)
+        font-style: italic
+        color: grey
+        font-size: 0.8em
+        width: 100%
+        margin: 10px 0px 5px 0px
+  .col-md-2
+    padding: 10px
+    .handle
+      cursor: move
+  .row
+    margin: 0
+
+li.noTasks
+  background: #fdfbfb
+  color: grey
+  font-style: italic
+  &:last-child
+    border-top-left-radius: 0px
+    border-top-right-radius: 0px
+    border-bottom-left-radius: 18px
+    border-bottom-right-radius: 18px
+
+.ui-dialog
+  z-index: 10
