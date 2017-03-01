@@ -15,19 +15,19 @@
   <div class="row">
 
    <div class="col-md-4"></div>
-      <div id="login" class="col-md-4">
+      <div id="login" class="col-md-3">
          <h1>Sign Up</h1>
          <div class="row-fluid" >
           <div class="span4 well"> 
          <%= form_for @user do |f| %>
          <fieldset>
-           <div class="control-group">
+           <div class="input-group">
+           
             <%= f.label :login%>
-            <%= f.text_field :login %>
-            <div class="controls">
+           <input class="form-control" <%= f.text_field :login%>
+           <br></br>
             <%= f.label :password%>
-            <%= f.password_field :password %>
-           </div>
+            <input class="form-control" <%= f.password_field :password %>
            </div>
            <br></br>
             <div class="form-actions">
